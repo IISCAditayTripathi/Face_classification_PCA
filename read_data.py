@@ -17,6 +17,8 @@ class read_and_load(object):
                 im = [elements for rows in im for elements in rows ]
                 image_array.append(im)
         image_array = numpy.asarray(image_array)
+        data_mean = numpy.mean(image_array)
+        image_array = (image_array - data_mean)/255.0
         return image_array
 
 
