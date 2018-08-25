@@ -11,6 +11,7 @@ sigma = 1/320*numpy.matmul(numpy.transpose(train_data), train_data)
 print(sigma.shape)
 
 U, S, V = numpy.linalg.svd(sigma)
-numpy.save('eigen_values.npy', U)
+numpy.save('eigen_values.npy', S)
+numpy.save('eigen_faces.npy', U)
 # eigen_values = {'eigen':U}
 # pickle.dump(eigen_values, open('eigen_values.pkl'))
