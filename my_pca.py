@@ -3,7 +3,23 @@ import pickle
 import numpy
 
 class PrincleComponentAnalysis(object):
-    """docstring for PrincleComponentAnalysis."""
+    """
+
+    It finds the Princeiple components of a data array.
+    Arguments:
+
+    (numpy array)
+
+    Available functions:
+
+    get_principle_components(self): Performs the SVD on data array and returns U, S, V arrays.
+    save_pc(string name): Save the U, S, V array as name.pkl
+    load_pc(string name): Loads U, S, V array from name.pkl.
+    reduce_image(array U, array image sample, int k): Performs the dimentionality reduction.
+    reconstruct_image(array reduced_image, array reduced_U, mean): Reconstructs the oiginal images from low dim image vector.
+
+    """
+
     def __init__(self, data):
         super(PrincleComponentAnalysis, self).__init__()
         self.data = data

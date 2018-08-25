@@ -21,7 +21,6 @@ U, S, V = principle_components.load_pc()
 
 k = 40 # Number of PCA dimensions
 
-# reduced_U = U[:, 0:k] # Selecting first k eigen vectors to represent image on
 
 train_sample = dataIO.sample_image(train_data)
 

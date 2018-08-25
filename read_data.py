@@ -4,7 +4,16 @@ from skimage import io as IO
 import random
 
 class read_and_load(object):
-    """docstring for read_and_load."""
+    """Performs data read opeartion.
+    Arguments:
+    data_path(string array)
+
+    Available methods:
+    read_data(list datalist): reads images from the path list.
+    make_train_test(): Make train-test splits and returns the train and test data arrays.
+    sample_image(array image_array): Randomly samples an image from array of images.
+
+    """
     def __init__(self, data_path):
         super(read_and_load, self).__init__()
         self.data_path = data_path
@@ -40,6 +49,4 @@ class read_and_load(object):
     def sample_image(self, image_array):
         max = image_array.shape[0]
         sample = random.randint(1, max)
-
         return image_array[sample, :]
-        
