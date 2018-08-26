@@ -7,7 +7,8 @@ from skimage import io as IO
 file_path= '/home/aditay/Matrix_Theory/Assignments/Assignment_2_PCA/code/face_image_paths.txt'
 dataIO = read_and_load(file_path)
 
-train_data, train_mean, valid_data, valid_mean = dataIO.make_train_test()
+train_data, train_mean, train_class, valid_data, valid_mean, valid_class = dataIO.make_train_test()
+
 
 bias = train_mean - valid_mean
 
