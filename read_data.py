@@ -4,6 +4,7 @@ from skimage import io as IO
 import random
 
 class read_and_load(object):
+
     """Performs data read opeartion.
     Arguments:
     data_path(string array)

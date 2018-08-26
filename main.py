@@ -9,6 +9,7 @@ dataIO = read_and_load(file_path)
 
 train_data, train_mean, valid_data, valid_mean = dataIO.make_train_test()
 
+bias = train_mean - valid_mean
 
 principle_components = pca(train_data)
 
@@ -19,17 +20,21 @@ principle_components = pca(train_data)
 U, S, V = principle_components.load_pc()
 
 
-k = 40 # Number of PCA dimensions
+k = 10 # Number of PCA dimensions
 
 
 train_sample = dataIO.sample_image(train_data)
+test_sample = valid_data[0,:]
 
-reduced_image, reduced_U = principle_components.reduce_image(U, train_sample, k)
+reduced_image, reduced_U = principle_components.reduce_image(U, test_sample, k)
 
-reconstruced_image = principle_components.reconstruct_image(reduced_image, reduced_U, train_mean)
+reconstruced_image = principle_components.reconstruct_image(reduced_image, reduced_U, valid_mean)
 
-original_image = train_sample + train_mean
+original_image = test_sample + valid_mean - bias
+test_mean_face = numpy.asarray(valid_mean.reshape([112, 92]), dtype=numpy.int16)
+
 original_reshaped = original_image.reshape([112, 92])
 original_reshaped = numpy.asarray(original_reshaped, dtype=numpy.int16)
-IO.imsave('original_reshaped_1.jpg', original_reshaped)
-IO.imsave('reconstruced_image_1_k_40.jpg', reconstruced_image)
+IO.imsave('test_original_reshaped_8.jpg', original_reshaped)
+IO.imsave('test_reconstruced_image_8_k_10.jpg', reconstruced_image)
+IO.imsave('test_mean_face.jpg', test_mean_face)
