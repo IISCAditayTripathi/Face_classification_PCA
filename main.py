@@ -44,7 +44,13 @@ if args.mode == 'face_classification':
 
     neigh.fit(numpy.transpose(reduced_images_train), numpy.asarray(train_class))
     predictions = neigh.predict(numpy.transpose(reduced_images_valid))
-    print(predictions)
+    predictions = predictions.tolist()
+    accurate = 0
+    for i in range(len(predictions)):
+        if predictions[i] == valid_class[i]:
+            accurate += 1
+    print("face classification accuracy for k=%d is: %d/%d = %f"%(k, accurate, len(predictions), float(accurate)/(len(predictions))))
+
 
 if args.mode == 'image_recons':
     U, S, V = principle_components.load_pc(args.eigen_path)
