@@ -51,7 +51,6 @@ if args.mode == 'face_classification':
             accurate += 1
     print("face classification accuracy for k=%d is: %d/%d = %f"%(k, accurate, len(predictions), float(accurate)/(len(predictions))))
 
-
 if args.mode == 'image_recons':
     U, S, V = principle_components.load_pc(args.eigen_path)
     train_sample = dataIO.sample_image(train_data)
