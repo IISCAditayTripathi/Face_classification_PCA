@@ -16,9 +16,9 @@ bias = train_mean - valid_mean
 
 principle_components = pca(train_data)
 
-# U, S, V = principle_components.get_principle_components()
-#
-# principle_components.save_pc()
+U, S, V = principle_components.get_principle_components()
+
+principle_components.save_pc()
 
 U, S, V = principle_components.load_pc()
 
