@@ -46,7 +46,7 @@ class read_and_load(object):
 
         image_array_valid = numpy.asarray(image_array_valid)
         mean_face_valid = numpy.mean(image_array_valid, axis=0)
-        image_array_valid = (image_array_train - mean_face_valid)
+        image_array_valid = (image_array_train - mean_face_train)
 
         return image_array_train, mean_face_train, image_class_train, image_array_valid, mean_face_valid, image_class_valid
 

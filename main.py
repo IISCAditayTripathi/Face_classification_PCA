@@ -23,7 +23,7 @@ principle_components = pca(train_data)
 U, S, V = principle_components.load_pc()
 
 
-k = 1000 # Number of PCA dimensions
+k = 200 # Number of PCA dimensions
 
 reduced_U = numpy.transpose(U[:, 0:k])
 reduced_images_train = numpy.matmul(reduced_U, numpy.transpose(train_data))
