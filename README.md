@@ -17,5 +17,5 @@ It will also save few reconstructed image samples.
 ```
 python3 main.py --mode=face_classification --nPC=30(your choice)
 ```
-
-Please check other **flags** for more information.
+With `k=40`, I am getting face recognition of `92.1 %`  
+### Please check other **flags** for more information.
