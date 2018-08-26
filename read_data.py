@@ -26,8 +26,27 @@ class read_and_load(object):
         image_class_train = []
         image_class_valid = []
         z = 0
+        random.seed(10)
         for data in data_list:
             z = z + 1
+            for i in range(10):
+                res = random.random()
+                # print(res)
+                if res < 0.8:
+
+                    data_path = data[0:-1]+'/'+str(i+1)+'.pgm'
+                    im = IO.imread(data_path)
+                    im = [elements for rows in im for elements in rows ]
+                    image_array_train.append(im)
+                    image_class_train.append(z)
+                elif res >= 0.8:
+
+                    data_path = data[0:-1]+'/'+str(i+1)+'.pgm'
+                    im = IO.imread(data_path)
+                    im = [elements for rows in im for elements in rows ]
+                    image_array_valid.append(im)
+                    image_class_valid.append(z)
+            '''
             for i in range(8):
                 data_path = data[0:-1]+'/'+str(i+1)+'.pgm'
                 im = IO.imread(data_path)
@@ -40,13 +59,14 @@ class read_and_load(object):
                 im = [elements for rows in im for elements in rows ]
                 image_array_valid.append(im)
                 image_class_valid.append(z)
+                '''
         image_array_train = numpy.asarray(image_array_train)
         mean_face_train = numpy.mean(image_array_train, axis=0)
         image_array_train = (image_array_train - mean_face_train)
 
         image_array_valid = numpy.asarray(image_array_valid)
         mean_face_valid = numpy.mean(image_array_valid, axis=0)
-        image_array_valid = (image_array_train - mean_face_train)
+        image_array_valid = (image_array_valid - mean_face_valid)
 
         return image_array_train, mean_face_train, image_class_train, image_array_valid, mean_face_valid, image_class_valid
 
